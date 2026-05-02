@@ -1,0 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Uncial+Antiqua&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode - Warm Parchment Aesthetic */
+    --background: 42 24% 97%; /* #FAF8F3 - Warm off-white */
+    --section-bg: 42 20% 95%; /* Slightly darker warm background */
+    --archmage-bg: 42 20% 92%; /* Slightly darker than section-bg for contrast */
+    
+    --foreground: 20 14% 10%; /* #1A1714 - Dark ink */
+    
+    --card: 0 0% 100%; /* Pure white for cards */
+    --card-foreground: 20 14% 10%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 10%;
+    
+    /* Primary - Gold */
+    --primary: 44 55% 54%; /* #C9A84C */
+    --primary-foreground: 20 14% 10%;
+    
+    /* Secondary - Warm Gray */
+    --secondary: 30 8% 88%; /* #E5E2DD */
+    --secondary-foreground: 20 14% 10%;
+    
+    /* Accent - Gold variant */
+    --accent: 44 55% 54%;
+    --accent-foreground: 20 14% 10%;
+    
+    /* Muted - Warm Gray */
+    --muted: 30 8% 88%;
+    --muted-foreground: 30 6% 40%; /* #6B6660 */
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 30 8% 85%; /* #D9D5CF */
+    --input: 30 8% 92%;
+    --ring: 44 55% 54%;
+    
+    --radius: 0.5rem;
+
+    /* Custom Shadows and Borders */
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --border-color-subtle: rgba(0, 0, 0, 0.1);
+    --border-color-strong: rgba(0, 0, 0, 0.2);
+
+    /* Mystical Library Tokens */
+    --mystical-cyan: 189 100% 50%;
+    --mystical-gold: 45 93% 47%;
+    --mystical-purple: 270 50% 40%;
+    --mystical-dark: 220 13% 8%;
+    --mystical-parchment: 42 24% 85%;
+
+    /* Character Colors for Timeline/Network */
+    --char-gold: 51 100% 50%;
+    --char-blue: 189 100% 50%;
+    --char-purple: 270 100% 70%;
+    --char-cyan: 180 100% 50%;
+    --char-red: 0 100% 64%;
+
+    /* Relationship Colors */
+    --rel-ally: 142 71% 45%;
+    --rel-rival: 39 100% 50%;
+    --rel-family: 271 91% 65%;
+    --rel-love: 346 87% 60%;
+    --rel-enemy: 0 84% 60%;
+    --rel-mentor: 199 89% 48%;
+    --rel-other: 215 16% 47%;
+
+    /* Manuscript Preview Tokens */
+    --manuscript-bg: 0 0% 100%;
+    --manuscript-text: 0 0% 10%;
+    --manuscript-border: 0 0% 85%;
+
+    /* Editor Specific Tokens */
+    --editor-bg: 42 20% 95%;
+    --editor-text: 0 0% 15%;
+    --sidebar-bg: 42 24% 97%;
+    --toolbar-bg: 42 20% 93%;
+
+    /* Front Matter Tokens */
+    --front-matter-bg: 42 20% 93%;
+    --front-matter-border: 44 55% 54%;
+
+    /* Template Formatting Tokens */
+    --font-courier: 'Courier Prime', Courier, monospace;
+    --font-times: 'Times New Roman', Times, serif;
+    --font-garamond: 'EB Garamond', serif;
+    --font-sans: ui-sans-serif, system-ui, sans-serif;
+
+    /* Heatmap Colors */
+    --heatmap-0: 30 8% 95%;
+    --heatmap-1: 44 55% 85%;
+    --heatmap-2: 44 55% 70%;
+    --heatmap-3: 44 55% 55%;
+    --heatmap-4: 44 55% 40%;
+  }
+
+  .dark {
+    /* Dark Mode - Enchanted Grimoire Aesthetic */
+    --background: 218 29% 5%; /* #0A0D12 */
+    --section-bg: 140 33% 9%; /* #0F1E14 */
+    --archmage-bg: 5 2% 3%; /* #050508 */
+    
+    --foreground: 42 24% 92%; /* #F0EDE6 (Parchment) */
+    
+    --card: 218 29% 7%;
+    --card-foreground: 42 24% 92%;
+    
+    --popover: 218 29% 7%;
+    --popover-foreground: 42 24% 92%;
+    
+    /* Primary - Gold */
+    --primary: 44 55% 54%; /* #C9A84C */
+    --primary-foreground: 218 29% 5%;
+    
+    /* Secondary - Amethyst */
+    --secondary: 264 47% 53%; /* #7B4FBF */
+    --secondary-foreground: 42 24% 92%;
+    
+    /* Accent - Gold variant */
+    --accent: 44 55% 54%;
+    --accent-foreground: 218 29% 5%;
+    
+    /* Muted - Faded Ink */
+    --muted: 37 13% 49%; /* #8A8070 */
+    --muted-foreground: 42 24% 80%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 37 13% 25%;
+    --input: 218 29% 10%;
+    --ring: 44 55% 54%;
+    
+    --radius: 0.5rem;
+
+    /* Custom Shadows and Borders */
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --border-color-subtle: rgba(255, 255, 255, 0.1);
+    --border-color-strong: rgba(255, 255, 255, 0.2);
+
+    /* Manuscript Preview Tokens */
+    --manuscript-bg: 42 20% 95%;
+    --manuscript-text: 0 0% 15%;
+    --manuscript-border: 0 0% 75%;
+
+    /* Editor Specific Tokens */
+    --editor-bg: 218 29% 6%;
+    --editor-text: 42 24% 90%;
+    --sidebar-bg: 218 29% 4%;
+    --toolbar-bg: 218 29% 5%;
+
+    /* Front Matter Tokens */
+    --front-matter-bg: 218 25% 8%;
+    --front-matter-border: 44 55% 40%;
+
+    /* Heatmap Colors */
+    --heatmap-0: 218 29% 10%;
+    --heatmap-1: 44 55% 20%;
+    --heatmap-2: 44 55% 35%;
+    --heatmap-3: 44 55% 50%;
+    --heatmap-4: 44 55% 65%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'EB Garamond', serif;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  
+  h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .rate-limit-banner {
+    @apply relative flex items-start gap-4 p-5 rounded-xl border border-slate-700 bg-card/50 text-muted-foreground overflow-hidden;
+  }
+}
+
+@layer utilities {
+  /* ==========================================================================
+     STANDARDIZED TEXT EFFECT RULES:
+     1. .text-gold-gradient is the standard headline treatment used site-wide 
+        for all H1, H2, H3 headlines and prominent text.
+     2. .ink-bleed-text is reserved exclusively for the homepage H1 element only.
+     3. .shimmer-text is retired and must not be used on any new elements.
+     ========================================================================== */
+     
+  .text-gold-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--mystical-gold)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .ink-bleed-text {
+    /* Kept intentionally blank here as animations are handled inline via framer-motion/tailwind classes on the HomePage */
+  }
+
+  .shimmer-text {
+    /* RETIRED */
+  }
+
+  /* Existing mystical library effects */
+  .text-glow-cyan { text-shadow: 0 0 10px hsl(var(--mystical-cyan) / 0.8); color: hsl(var(--mystical-cyan)); }
+  .text-glow-gold { text-shadow: 0 0 10px hsl(var(--mystical-gold) / 0.8); color: hsl(var(--mystical-gold)); }
+  
+  .neon-glow-cyan { box-shadow: 0 0 15px hsl(var(--mystical-cyan) / 0.4), inset 0 0 10px hsl(var(--mystical-cyan) / 0.2); border-color: hsl(var(--mystical-cyan) / 0.5); }
+  .neon-glow-gold { box-shadow: 0 0 15px hsl(var(--mystical-gold) / 0.4), inset 0 0 10px hsl(var(--mystical-gold) / 0.2); border-color: hsl(var(--mystical-gold) / 0.5); }
+
+  .glass-panel-mystic {
+    background-color: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.2);
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+  }
+
+  .manuscript-paper {
+    background-color: hsl(var(--manuscript-bg));
+    color: hsl(var(--manuscript-text));
+    border: 1px solid hsl(var(--manuscript-border));
+    box-shadow: 0 10px 25px -5px var(--shadow-color);
+  }
+
+  .editor-container {
+    background-color: hsl(var(--editor-bg));
+    color: hsl(var(--editor-text));
+  }
+
+  .sidebar-container {
+    background-color: hsl(var(--sidebar-bg));
+  }
+
+  .toolbar-container {
+    background-color: hsl(var(--toolbar-bg));
+  }
+
+  .front-matter-container {
+    background-color: hsl(var(--front-matter-bg));
+    border-left: 2px solid hsl(var(--front-matter-border));
+  }
+
+  /* Half Title Page Styles */
+  .half-title-page {
+    break-before: right;
+    page-break-before: right;
+    text-align: center;
+    padding-top: 33vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: hsl(var(--manuscript-bg));
+    color: hsl(var(--manuscript-text));
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .half-title-text {
+    font-variant: small-caps;
+    text-transform: lowercase;
+    font-size: 2.25rem;
+    letter-spacing: 0.15em;
+    font-weight: 400;
+    margin: 0;
+    color: inherit;
+    font-family: var(--template-font-family, 'Playfair Display', serif);
+  }
+  
+  .half-title-text::first-letter {
+    font-size: 1.2em;
+    text-transform: uppercase;
+  }
+
+  /* Title Page Styles */
+  .title-page {
+    break-before: right;
+    page-break-before: right;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20vh 10vw 15vh 10vw;
+    background-color: hsl(var(--manuscript-bg));
+    color: hsl(var(--manuscript-text));
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .title-page-top {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .title-page-middle {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .title-page-bottom {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .title-page-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+    line-height: 1.2;
+    font-family: var(--template-font-family, 'Playfair Display', serif);
+  }
+
+  .title-page-subtitle {
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 400;
+    margin: 0;
+    color: hsl(var(--manuscript-text) / 0.7);
+    font-family: var(--template-font-family, 'Playfair Display', serif);
+  }
+
+  .title-page-author {
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 400;
+    margin: 0;
+    font-family: var(--template-font-family, 'Playfair Display', serif);
+  }
+
+  /* Heatmap Utilities */
+  .heatmap-cell-0 { background-color: hsl(var(--heatmap-0)); }
+  .heatmap-cell-1 { background-color: hsl(var(--heatmap-1)); }
+  .heatmap-cell-2 { background-color: hsl(var(--heatmap-2)); }
+  .heatmap-cell-3 { background-color: hsl(var(--heatmap-3)); }
+  .heatmap-cell-4 { background-color: hsl(var(--heatmap-4)); }
+}
+
+/* Animations */
+@keyframes floating-particles {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(-100px) translateX(20px) scale(0.5); opacity: 0; }
+}
+
+@keyframes quill-glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 8px hsl(var(--mystical-cyan) / 0.6)); }
+  50% { filter: drop-shadow(0 0 20px hsl(var(--mystical-cyan) / 0.9)); }
+}
+
+@keyframes text-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes magical-energy-flow {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes candlelight-flicker {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  25% { opacity: 0.8; transform: scale(0.98); }
+  50% { opacity: 0.9; transform: scale(1.02); }
+  75% { opacity: 0.85; transform: scale(0.95); }
+}
+
+.animate-floating-particles { animation: floating-particles 4s infinite ease-in-out; }
+.animate-quill-glow { animation: quill-glow-pulse 3s infinite ease-in-out; }
+.animate-text-shimmer {
+  background: linear-gradient(90deg, hsl(var(--foreground)) 0%, hsl(var(--mystical-gold)) 50%, hsl(var(--foreground)) 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer 3s linear infinite;
+}
+.animate-candlelight { animation: candlelight-flicker 0.5s infinite alternate; }
+
+/* TipTap Editor Styles */
+.ProseMirror {
+  outline: none;
+}
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: hsl(var(--muted-foreground));
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Template Specific Overrides */
+.template-applied .ProseMirror {
+  max-width: var(--template-max-width, 65ch);
+  margin: 0 auto;
+  font-family: var(--template-font-family, inherit);
+  font-size: var(--template-font-size, inherit);
+  line-height: var(--template-line-height, inherit);
+  text-align: var(--template-text-align, left);
+  padding: var(--template-padding, 2rem);
+}
+
+.template-applied .ProseMirror p {
+  text-indent: var(--template-text-indent, 0);
+  margin-bottom: var(--template-paragraph-spacing, 1em);
+}
+
+/* Print specific overrides for half-title and title-page */
+@media print {
+  .half-title-page {
+    padding-top: 33%;
+    min-height: 100vh;
+    background-color: transparent;
+    color: black;
+  }
+  .title-page {
+    padding: 20% 10% 15% 10%;
+    min-height: 100vh;
+    background-color: transparent;
+    color: black;
+  }
+  @page :first {
+    margin-top: 0;
+  }
+}
