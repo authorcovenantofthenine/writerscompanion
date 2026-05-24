@@ -51,7 +51,7 @@ function SetupPage() {
         circleName: circleName,
         roundLength: finalLength,
         currentRound: 1,
-        currentWriterIndex: 0, // CRITICAL: Explicitly set to 0 (number type)
+        currentWriterIndex: 1, // 1-based: PocketBase rejects 0 on required number fields
         status: 'active',
         member_1_id: currentUser.id,
         member_1_name: creatorName,

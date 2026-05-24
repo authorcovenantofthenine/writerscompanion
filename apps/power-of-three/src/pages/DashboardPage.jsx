@@ -109,7 +109,8 @@ export default function DashboardPage() {
           { id: circleData.member_3_id, name: circleData.member_3_name, slot: 2 }
         ];
         
-        const wIndex = circleData.currentWriterIndex || 0;
+        // currentWriterIndex is stored 1-based in PocketBase (0 fails required validation)
+        const wIndex = (circleData.currentWriterIndex || 1) - 1;
         const bIndex = (wIndex + 1) % 3;
         const eIndex = (wIndex + 2) % 3;
 
@@ -280,16 +281,18 @@ export default function DashboardPage() {
       }, { $autoCancel: false });
 
       const nextRoundNumber = circle.currentRound + 1;
-      const nextIndex = (circle.currentWriterIndex + 1) % 3;
+      // Convert stored 1-based index to 0-based for array operations
+      const writerIdx = (circle.currentWriterIndex || 1) - 1;
+      const nextIndex = (writerIdx + 1) % 3;
       const isComplete = nextRoundNumber > 3;
 
       if (!isComplete) {
         const nextRound = rounds.find(r => r.roundNumber === nextRoundNumber);
         if (nextRound) {
           const currentRoles = {
-            [members[circle.currentWriterIndex].id]: 'writer',
-            [members[(circle.currentWriterIndex + 1) % 3].id]: 'beta_reader',
-            [members[(circle.currentWriterIndex + 2) % 3].id]: 'editor'
+            [members[writerIdx].id]: 'writer',
+            [members[(writerIdx + 1) % 3].id]: 'beta_reader',
+            [members[(writerIdx + 2) % 3].id]: 'editor'
           };
           
           const newRoles = rotateRoles(currentRoles);
@@ -312,7 +315,7 @@ export default function DashboardPage() {
 
         await pb.collection('circles').update(circle.id, {
           currentRound: nextRoundNumber,
-          currentWriterIndex: nextIndex,
+          currentWriterIndex: nextIndex + 1, // Store back as 1-based
           status: 'active'
         }, { $autoCancel: false });
       } else {
@@ -354,7 +357,7 @@ export default function DashboardPage() {
         circleName: `${circle.circleName} - Cycle 2`,
         roundLength: circle.roundLength,
         currentRound: 1,
-        currentWriterIndex: 0,
+        currentWriterIndex: 1, // 1-based
         status: 'active',
         userId: currentUser.id,
         member_1_id: circle.member_1_id,
@@ -481,9 +484,9 @@ export default function DashboardPage() {
               )}
             </div>
             
-            <MemberAvatars 
-              members={members} 
-              currentWriterIndex={circle?.currentWriterIndex} 
+            <MemberAvatars
+              members={members}
+              currentWriterIndex={(circle?.currentWriterIndex || 1) - 1}
             />
           </div>
         </div>
